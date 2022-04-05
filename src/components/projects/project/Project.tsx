@@ -1,16 +1,16 @@
-import style from './Skill.module.css'
+import style from './Project.module.css'
 import styleContainer from '../../common/styles/Container.module.css'
 
-type SkillPropsType = {
+type ProjectPropsType = {
     title: string
     description: string
 }
 
-export const Skill = (props:SkillPropsType)=> {
+export const Project = (props: ProjectPropsType) => {
     return (
-        <div className={style.skillBlock}>
-            <div className={style.icon}>
-
+        <div className={style.projectBlock}>
+            <div className={style.imgContainer}>
+                <a href="#" className={style.button}>Look</a>
             </div>
             <h3 className={style.title}>{props.title}</h3>
             <span className={style.description}>{props.description}</span>

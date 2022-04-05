@@ -1,0 +1,23 @@
+.mainBlock {
+    height: 100vh;
+    background-color: #68ACBA;
+}
+.welcome {
+    width:300px;
+    background-color: #E3BB56;
+}
+.photo {
+    background-color: #B44D54;
+    width: 300px;
+    height: 350px;
+}
+.mainContainer {
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 750px) {
+    .mainContainer {
+        justify-content: center;
+    }
+}

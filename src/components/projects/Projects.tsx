@@ -1,21 +1,17 @@
-import style from './Skills.module.css'
-import styleContainer from '../../common/styles/Container.module.css'
-import {Skill} from "./skill/Skill";
+import style from './Projects.module.css'
+import {Project} from "./project/Project";
+import styleContainer from "../../common/styles/Container.module.css";
 
-export const Skills = () => {
+export const Projects = () => {
     return (
-        <div className={style.skillsBlock}>
-            <div className={`${styleContainer.container} ${style.skillsContainer}`}>
-                <h2 className={style.title}>Skills</h2>
-                <div className={style.skills}>
-                    <Skill title={'HTML/CSS'}
-                           description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, harum!'}/>
-                    <Skill title={'JavaScript/TypeScript'}
-                           description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa optio praesentium quis ullam unde voluptate! A fuga inventore laboriosam!'}
-                    />
-                    <Skill title={'React'}
-                           description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis dignissimos ex impedit libero recusandae tempore.'}
-                    />
+        <div className={style.projectsBlock}>
+            <div className={`${styleContainer.container} ${style.projectsContainer}`}>
+                <h2 className={style.title}>My projects</h2>
+                <div className={style.projects}>
+                    <Project title={'Social network'}
+                             description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur dolorum iste nemo sint? Nam!'}/>
+                    <Project title={'To do list'} description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, repellendus!'}/>
+                    <Project title={'Counter'} description={'Lorem ipsum dolor sit amet...'}/>
                 </div>
             </div>
         </div>
