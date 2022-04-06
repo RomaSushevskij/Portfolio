@@ -1,0 +1,36 @@
+@import "src/common/styles/scss/variables";
+
+.skillBlock {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+  background: #191d2b;
+  border: 1px solid #2e344e;
+  border-top: 5px solid #2e344e;
+  padding: 30px;
+  transition: all .6s ease-out;
+  &:hover {
+    border-top-color: $primaryColor;
+    transition: all .6s ease-out;
+  }
+  .icon {
+    width: 60px;
+    height: 60px;
+    background-color: #C9C3BF;
+  }
+
+  .title {
+    margin: 10px 0;
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 100%;
+  }
+}
+
+
+
+

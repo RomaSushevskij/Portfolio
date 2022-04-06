@@ -1,0 +1,62 @@
+@import "src/common/styles/scss/variables";
+
+.mainBlock {
+  height: 100vh;
+
+  .mainContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .photo {
+      background-color: $borderColor;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+    }
+
+    .welcome {
+      padding: 50px 20px;
+      text-align: center;
+
+      h1 {
+        font-weight: 700;
+        font-size: 2.6857rem;
+        line-height: 3.1rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+
+        .colorTheme {
+          color: $primaryColor;
+        }
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.55rem;
+        margin-top: 15px;
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    height: max-content;
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  .mainContainer {
+    justify-content: center;
+  }
+  .mainBlock {
+    height: max-content;
+  }
+
+}

@@ -1,19 +1,18 @@
-import style from './Project.module.css'
+import styleModule from './Project.module.scss'
 import styleContainer from '../../common/styles/Container.module.css'
 
 type ProjectPropsType = {
     title: string
     description: string
+    style?: { backgroundImage: string }
 }
 
-export const Project = (props: ProjectPropsType) => {
+export const Project = ({title, description, style}: ProjectPropsType) => {
     return (
-        <div className={style.projectBlock}>
-            <div className={style.imgContainer}>
-                <a href="#" className={style.button}>Look</a>
-            </div>
-            <h3 className={style.title}>{props.title}</h3>
-            <span className={style.description}>{props.description}</span>
+        <div className={styleModule.projectBlock}>
+            <div className={styleModule.imgContainer} style={style}></div>
+            <h5 className={styleModule.title}>{title}</h5>
+            <h6 className={styleModule.description}>{description}</h6>
         </div>
     )
 }

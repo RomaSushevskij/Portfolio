@@ -1,0 +1,24 @@
+@import "src/common/styles/scss/variables";
+
+.sectionTitle {
+    h5 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      position: relative;
+      font-size: 1.43rem;
+      line-height: 2.14rem;
+      color:$titleColor;
+      &::before {
+        background: $borderColor;
+        bottom: 0;
+        content: "";
+        height: 2px;
+        position: absolute;
+        top: auto;
+        width: 100px;
+        transform: translate(-50%, 50%);
+        left:50%;
+      }
+    }
+}
