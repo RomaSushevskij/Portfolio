@@ -56,5 +56,12 @@
     user-select: none;
     white-space: nowrap;
     z-index: -1;
+    text-overflow: clip;
+    @media screen and (max-width: 480px) {
+      font-size: 3.1rem;
+    }
+    @media screen and (min-width: 481px) and (max-width: 767px) {
+      font-size: 5rem;
+    }
   }
 }
