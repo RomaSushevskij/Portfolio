@@ -2,18 +2,11 @@
 
 .mainBlock {
   height: 100vh;
+  margin: 40px 0 80px;
 
   .mainContainer {
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    .photo {
-      background-color: $borderColor;
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-    }
 
     .welcome {
       padding: 50px 20px;

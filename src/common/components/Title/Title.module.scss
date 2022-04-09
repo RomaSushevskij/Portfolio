@@ -7,7 +7,6 @@
   margin-bottom: 50px;
   position: relative;
   z-index: 1;
-
   h2 {
     color: $titleColor;
     font-weight: 700;
@@ -45,7 +44,7 @@
   span {
     color: rgba(25, 29, 43, .44);
     display: inline-block;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: 900;
     left: 0;
     line-height: 1;
@@ -56,12 +55,11 @@
     user-select: none;
     white-space: nowrap;
     z-index: -1;
-    text-overflow: clip;
     @media screen and (max-width: 480px) {
-      font-size: 3.1rem;
+      font-size: 2.2rem;
     }
     @media screen and (min-width: 481px) and (max-width: 767px) {
-      font-size: 5rem;
+      font-size: 3.8rem;
     }
   }
 }

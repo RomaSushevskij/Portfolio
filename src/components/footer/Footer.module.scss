@@ -1,0 +1,23 @@
+@import "../../common/styles/scss/variables";
+
+.footerBlock {
+  border-top: 1px solid $borderColor;
+
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+    min-width: min-content;
+
+    .fullName {
+      margin-top:20px;
+    }
+
+    .rights {
+      margin: 10px 0;
+    }
+  }
+}
+
+
+
+

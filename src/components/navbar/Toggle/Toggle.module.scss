@@ -1,0 +1,39 @@
+@import '../../../common/styles/scss/variables';
+
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: $secondBgcColor;
+  font-size: 1.6rem;
+  height: 50px;
+  justify-content: center;
+  left: 100%;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  width: 50px;
+  border: 1px solid $borderColor;
+
+  i {
+    display: inline-block;
+    font: normal normal normal 1em/1 "LineIcons";
+    color: inherit;
+    flex-shrink: 0;
+    speak: none;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+
+    &::before {
+      content: '\2630';
+      color: $textColor;
+    }
+
+    &.toggleOn::before {
+      content: '\2573';
+    }
+  }
+}

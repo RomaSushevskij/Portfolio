@@ -1,0 +1,12 @@
+@import "src/common/styles/scss/variables";
+.avatarWrapper {
+  border:8px solid;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-size: cover;
+  @media screen and (max-width: 301px) {
+    width: 200px;
+    height: 200px;
+  }
+}

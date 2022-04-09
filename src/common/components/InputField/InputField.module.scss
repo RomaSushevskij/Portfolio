@@ -1,0 +1,32 @@
+@import "../../styles/scss/variables";
+
+.inputWrapper {
+  margin-top: 30px;
+  position: relative;
+
+  label {
+    background: $mainBgcColor;
+    font-size: .94rem;
+    left: 15px;
+    padding: 0 10px;
+    pointer-events: none;
+    position: absolute;
+    top: -10px;
+    transition: all .4s ease-out;
+    display: inline-block;
+  }
+
+  input {
+    border: 1px solid #2e344e;
+    font-size: 1rem;
+    height: 44px;
+    padding: 0 15px;
+    vertical-align: middle;
+    width: 100%;
+    background: transparent;
+    color: $textColor;
+    line-height: inherit;
+    outline: none;
+  }
+}
+

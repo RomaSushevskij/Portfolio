@@ -1,0 +1,39 @@
+@import "src/common/styles/scss/variables";
+.contactInfoBlock{
+  background: $secondBgcColor;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding: 30px;
+  @media screen and (max-width: 415px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .contactInfoBlockIcon {
+    border: 1px solid $borderColor;
+    display: flex;
+    min-width: 70px;
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 415px) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+  .contactInfoBlockContent h6 {
+    margin-top: -5px;
+    color: $titleColor;
+    font-size: 1.04rem;
+    line-height: 1.657rem;
+  }
+}
+
+
+
+
+
+

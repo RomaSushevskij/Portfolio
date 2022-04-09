@@ -1,9 +1,0 @@
-.header {
-    height: 80px;
-    background-color: #C9C3BF;
-}
-.headerContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}

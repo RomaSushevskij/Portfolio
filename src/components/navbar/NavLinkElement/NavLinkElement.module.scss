@@ -1,0 +1,51 @@
+@import '../../../common/styles/scss/variables';
+
+li {
+  margin-bottom: 1px;
+  display: block;
+  list-style: none;
+  text-align: center;
+
+  a {
+    padding: 15px 0;
+    color: $textColor;
+    display: block;
+    font-size: .94rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    transition: all .4s ease-out;
+    z-index: 1;
+    text-decoration: none;
+    cursor:pointer;
+
+    &::before {
+      background: rgba(3, 127, 255, .2);
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 100%;
+      top: 0;
+      transition: all .4s ease-out;
+      visibility: hidden;
+      width: 0;
+      z-index: -1;
+    }
+
+    &:hover {
+      color: $primaryColor;
+    }
+
+    &:hover:before {
+      visibility: visible;
+      width: 100%;
+    }
+    &.activeLink {
+      background-color: $primaryColor;
+      color:$titleColor;
+    }
+  }
+}

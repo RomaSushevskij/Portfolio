@@ -20,7 +20,7 @@ export const Projects = ({projectsData}: ProjectsPropsType) => {
         )
     })
     return (
-        <div className={style.projectsBlock}>
+        <div className={style.projectsBlock} id={'projects'}>
             <div className={`${styleContainer.container} ${style.projectsContainer}`}>
                 <Title titleText={'Projects'}/>
                 <div className={style.projects}>

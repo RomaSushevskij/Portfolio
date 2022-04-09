@@ -1,0 +1,71 @@
+@import "../../common/styles/scss/variables";
+
+.navBarWrapper {
+  width: 250px;
+  background: $secondBgcColor;
+  border-right: 1px solid $borderColor;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  transition: all .4s ease-out;
+  z-index: 10;
+  &.active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    transition: all .4s ease-out;
+  }
+
+  .navBarInner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #6B6B6B;
+      border-radius: 50px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+      background-color: #383838;
+    }
+
+    .navBarImage {
+      border-bottom: 1px solid #2e344e;
+      display: block;
+      padding: 40px;
+      text-align: center;
+      width: 100%;
+
+    }
+
+    .navBarMenu {
+      margin-bottom: 0;
+      padding: 15px 5px;
+      width: 100%;
+
+    }
+
+    p {
+      border-top: 1px solid #2e344e;
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 0;
+      padding: 15px 0;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}

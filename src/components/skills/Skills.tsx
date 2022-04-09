@@ -2,21 +2,29 @@ import style from './Skills.module.scss'
 import styleContainer from '../../common/styles/Container.module.css'
 import {Skill} from "./skill/Skill";
 import {Title} from "../../common/components/Title/Title";
+import {HTMLIcon, ReactIcon} from '../../common/components/TechnologyIcons/TechnologyIcons';
+import {SkillType} from '../../App';
 
-export const Skills = () => {
+export type SkillsPropsType = {
+    skillsData: SkillType[]
+}
+export const Skills = ({skillsData}: SkillsPropsType) => {
+
+    const skillItems = skillsData.map(skill => {
+        const {id, title, description, icon} = skill
+        return (
+            <Skill key={id}
+                   title={title}
+                   description={description}
+                   icon={icon}/>
+        )
+    })
     return (
-        <div className={style.skillsBlock}>
+        <div className={style.skillsBlock} id={'skills'}>
             <div className={`${styleContainer.container} ${style.skillsContainer}`}>
                 <Title titleText={'Skills'}/>
                 <div className={style.skills}>
-                    <Skill title={'HTML/CSS'}
-                           description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, harum!'}/>
-                    <Skill title={'JavaScript/TypeScript'}
-                           description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa optio praesentium quis ullam unde voluptate! A fuga inventore laboriosam!'}
-                    />
-                    <Skill title={'React'}
-                           description={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis dignissimos ex impedit libero recusandae tempore.'}
-                    />
+                    {skillItems}
                 </div>
             </div>
         </div>
