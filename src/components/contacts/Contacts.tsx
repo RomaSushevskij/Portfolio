@@ -7,6 +7,8 @@ import {Title} from '../../common/components/Title/Title';
 import {ContactInfoBlock} from './ContactInfoBlock/ContactInfoBlock';
 import {ContactsDataType} from '../../App';
 import {EmailIcon, PhoneIcon, TelegramIcon} from './ContactInfoBlock/ContactInfoBlockIcons/ContactInfoBlockIcons';
+import {useContext} from 'react';
+import {ThemeContext} from '../../context';
 
 type ContactsPropsType = {
     contactsData: ContactsDataType

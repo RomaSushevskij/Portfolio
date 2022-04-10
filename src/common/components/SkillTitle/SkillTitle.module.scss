@@ -9,6 +9,14 @@
       font-size: 1.43rem;
       line-height: 2.14rem;
       color:$titleColor;
+      &.light {
+        color:$lightTitleColor;
+        transition: all .6s ease-out;
+        &::before {
+          background: $lightBorderColor;
+          transition: all .6s ease-out;
+        }
+      }
       &::before {
         background: $borderColor;
         bottom: 0;

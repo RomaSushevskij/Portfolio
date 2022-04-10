@@ -1,5 +1,7 @@
 import styleModule from './Avatar.module.scss'
 import {AvatarSettingsType} from '../../../App';
+import {ThemeContext} from '../../../context';
+import {useContext} from 'react';
 
 type AvatarPropsType = {
     style:AvatarSettingsType

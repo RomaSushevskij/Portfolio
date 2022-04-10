@@ -10,14 +10,93 @@
   margin: 10px 0;
 
   .imgContainer {
-    width:100%;
+    width: 100%;
     height: 200px;
-    background-color: #C9C3BF;
     display: flex;
     justify-content: center;
     align-items: center;
     background-size: cover;
     background-position: center;
+    position: relative;
+
+    &::before {
+      background: hsla(0, 0%, 100%, .5);
+      backdrop-filter: blur(4px);
+      content: "";
+      height: calc(100% - 30px);
+      left: 15px;
+      position: absolute;
+      top: 15px;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: 0;
+      transform-origin: 0;
+      transition: all .4s ease-out;
+      width: calc(100% - 30px);
+    }
+
+    ul {
+      left: 0;
+      margin-bottom: 0;
+      margin-top: 30px;
+      opacity: 0;
+      padding-left: 0;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      transition: all .4s ease-in-out .2s;
+      visibility: hidden;
+      width: 100%;
+
+      li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 7px;
+
+        a {
+          background: $textColor;
+          border-radius: 100px;
+          color: $titleColor;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.25rem;
+          height: 45px;
+          line-height: 1;
+          outline: none;
+          padding: 5px 0;
+          text-align: center;
+          transition: all .4s ease-out;
+          vertical-align: middle;
+          width: 45px;
+          transition: all .4s ease-out;
+          &.light {
+            background: $lightTextColor;
+            transition: all .4s ease-out;
+          }
+
+          &:hover {
+            background-color: $primaryColor;
+
+          }
+        }
+      }
+    }
+
+    &:hover {
+      &::before {
+        transform: scaleX(1);
+      }
+
+      ul {
+        visibility: visible;
+        opacity: 1;
+        margin-top: 0;
+      }
+    }
+
     @media screen and (min-width: 300px) and (max-width: 480px) {
       height: 220px;
     }
@@ -33,12 +112,25 @@
     margin-top: 15px;
     font-size: 1.43rem;
     line-height: 2.14rem;
+    transition: all .6s ease-out;
+
+    &.light {
+      color: $lightTitleColor;
+      transition: all .6s ease-out;
+    }
   }
+
   .description {
     color: $textColor;
     font-size: 1.14rem;
     line-height: 1.857rem;
     font-weight: 500;
+
+    &.light {
+      color: $lightTextColor;
+      transition: all .6s ease-out;
+
+    }
   }
 
   @media screen and (max-width: 750px) {

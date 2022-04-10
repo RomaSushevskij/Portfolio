@@ -11,12 +11,14 @@ type ProjectsPropsType = {
 
 export const Projects = ({projectsData}: ProjectsPropsType) => {
     const projects = projectsData.map(pr => {
-        const {id, title, description, style,} = pr;
+        const {id, title, description, style, demoLink, codeLink} = pr;
         return (
             <Project key={id}
                      title={title}
                      description={description}
-                     style={style}/>
+                     style={style}
+                     demoLink={demoLink}
+                     codeLink={codeLink}/>
         )
     })
     return (

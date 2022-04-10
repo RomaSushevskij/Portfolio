@@ -14,10 +14,15 @@
     top: -10px;
     transition: all .4s ease-out;
     display: inline-block;
+    transition: all .4s ease-out;
+    &.light {
+      background: $lightMainBgcColor;
+      transition: all .4s ease-out;
+    }
   }
 
   input {
-    border: 1px solid #2e344e;
+    border: 1px solid $borderColor;
     font-size: 1rem;
     height: 44px;
     padding: 0 15px;
@@ -27,6 +32,12 @@
     color: $textColor;
     line-height: inherit;
     outline: none;
+    transition: all .4s ease-out;
+    &.lightInput {
+      border: 1px solid $lightBorderColor;
+      color: $lightTextColor;
+      transition: all .4s ease-out;
+    }
   }
 }
 

@@ -11,6 +11,18 @@
   position: relative;
   width: 500px;
   justify-content: center;
+  transition: all .4s ease-out;
+
+  &.light {
+    background: $lightSecondBgcColor;
+    border-left: 5px solid $lightBorderColor;
+    transition: all .4s ease-out;
+    &::after {
+      transition: all .4s ease-out;
+      border-color: $lightSecondBgcColor transparent transparent $lightSecondBgcColor;
+    }
+  }
+
   @media screen and (max-width: 750px) {
     width: 100%;
   }
@@ -20,6 +32,7 @@
   }
 
   &::after {
+    transition: all .4s ease-out;
     border-color: $secondBgcColor transparent transparent $secondBgcColor;
     border-style: solid;
     border-width: 12px;

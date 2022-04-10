@@ -1,18 +1,43 @@
 import styleModule from './Project.module.scss'
-import styleContainer from '../../common/styles/Container.module.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCode, faEye} from '@fortawesome/free-solid-svg-icons';
+import {useContext} from 'react';
+import {ThemeContext} from '../../../context';
 
 type ProjectPropsType = {
     title: string
     description: string
     style?: { backgroundImage: string }
+    demoLink: string
+    codeLink: string
 }
 
-export const Project = ({title, description, style}: ProjectPropsType) => {
+export const Project = ({
+                            title,
+                            description,
+                            style,
+                            demoLink, codeLink
+                        }: ProjectPropsType) => {
+    const {lightMode} = useContext(ThemeContext)
     return (
         <div className={styleModule.projectBlock}>
-            <div className={styleModule.imgContainer} style={style}></div>
-            <h5 className={styleModule.title}>{title}</h5>
-            <h6 className={styleModule.description}>{description}</h6>
+            <div className={styleModule.imgContainer} style={style}>
+                <ul className={styleModule.link}>
+                    <li>
+                        <a className={lightMode ? styleModule.light : ''} href={demoLink} target={'_black'}>
+                            <FontAwesomeIcon icon={faEye}/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href={codeLink} target={'_black'}>
+                            <FontAwesomeIcon icon={faCode}/>
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <h5 className={lightMode ? `${styleModule.title} ${styleModule.light}` : styleModule.title}>{title}</h5>
+            <h6 className={lightMode ? `${styleModule.description} ${styleModule.light}` : styleModule.description}>{description}</h6>
         </div>
     )
 }

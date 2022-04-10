@@ -3,7 +3,8 @@ import {Avatar} from '../../common/components/Avatar/Avatar';
 import {AvatarSettingsType} from '../../App';
 import {Toggle} from './Toggle/Toggle';
 import {NavLinkElement} from './NavLinkElement/NavLinkElement';
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
+import {ThemeContext} from '../../context';
 
 type NavBarPropsType = {
     avatarNavBarSettings: AvatarSettingsType
@@ -16,6 +17,7 @@ export const NavBar = ({
                            , linkPaths,
                            onActivateNavBar
                        }: NavBarPropsType) => {
+    const {lightMode} = useContext(ThemeContext)
     const [editMode, setEditMode] = useState(false)
     useEffect(()=>{
         if(editMode) {

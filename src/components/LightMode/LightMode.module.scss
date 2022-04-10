@@ -1,0 +1,53 @@
+@import "src/common/styles/scss/variables";
+
+.lightMode {
+  align-items: center;
+  background: hsla(0,0%,100%,.5);
+  display: flex;
+  height: 40px;
+  left: auto;
+  padding: 0 10px;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  z-index: 999;
+  &.light {
+    background: rgba(0,0,0,.5);
+  }
+  .icon {
+    display: inline-block;
+    line-height: 1;
+    margin-right: 5px;
+    vertical-align: middle;
+    color:$titleColor;
+  }
+  .lightModeSwitch {
+    background: $borderColor;
+    border: 0;
+    border-radius: 100px;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    vertical-align: middle;
+    width: 40px;
+    cursor: pointer;
+    &.light {
+      background: #cbced8;
+      &::after {
+        background: $primaryColor;
+        left: 22px;
+      }
+    }
+    &::after {
+      background: $textColor;
+      border-radius: 100px;
+      content: "";
+      height: 16px;
+      left: 2px;
+      position: absolute;
+      top: 2px;
+      transition: all .4s ease-out;
+      width: 16px;
+    }
+  }
+}

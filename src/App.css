@@ -29,9 +29,8 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     min-width: min-content;
-    background-color: #10121B;
+    /*background-color: #10121B;*/
     font-family: Nunito, sans-serif;
-    color: #a4acc4;
 }
 
 /*
@@ -66,6 +65,14 @@ p, h1, h2, h3, h4, h5, h6 {
 .wrapper {
     position: relative;
     z-index: 1;
+    background-color: #10121B;
+    transition: all .4s ease-out;
+    color: #a4acc4;
+}
+.wrapper.light {
+    background-color: #F1F1F1;
+    transition: all .4s ease-out;
+    color: #313131;
 }
 
 .wrapper .bgcBlur {

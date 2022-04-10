@@ -1,6 +1,6 @@
 import style from './ContactInfoBlock.module.scss'
-import {PhoneIcon} from './ContactInfoBlockIcons/ContactInfoBlockIcons';
-import {ContactsDataType} from '../../../App';
+import {useContext} from 'react';
+import {ThemeContext} from '../../../context';
 
 type ContactInfoBlockPropsType = {
     title: string
@@ -14,8 +14,12 @@ export const ContactInfoBlock = ({
                                      contactsData,
                                  }: ContactInfoBlockPropsType) => {
     const contactItems = contactsData.map((c, i) => <p key={c + i}>{c}</p>)
+    const {lightMode} = useContext(ThemeContext)
     return (
-        <div className={style.contactInfoBlock}>
+
+        <div className={lightMode ?
+            `${style.contactInfoBlock} ${style.light}` :
+            style.contactInfoBlock}>
                 <span className={style.contactInfoBlockIcon}>
                     {icon}
                 </span>

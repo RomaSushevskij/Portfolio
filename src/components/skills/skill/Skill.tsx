@@ -1,5 +1,7 @@
 import style from './Skill.module.scss'
 import {SkillTitle} from "../../../common/components/SkillTitle/SkillTitle";
+import {useContext} from 'react';
+import {ThemeContext} from '../../../context';
 
 type SkillPropsType = {
     title: string
@@ -8,8 +10,9 @@ type SkillPropsType = {
 }
 
 export const Skill = ({title, description,icon}: SkillPropsType) => {
+    const {lightMode} =useContext(ThemeContext)
     return (
-        <div className={style.skillBlock}>
+        <div className={lightMode ? `${style.skillBlock} ${style.light}` : style.skillBlock}>
             <div className={style.icon}>{icon}</div>
             <SkillTitle titleText={title}/>
             <p className={style.description}>{description}</p>

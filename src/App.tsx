@@ -1,5 +1,5 @@
-import React, {ReactComponentElement, ReactNode, useCallback, useState} from 'react';
-import './App.css';
+import React, {ReactNode, useCallback, useState} from 'react';
+import './App.scss';
 import {Main} from "./components/main/Main";
 import {Skills} from "./components/skills/Skills";
 import {Projects} from "./components/projects/Projects";
@@ -14,19 +14,29 @@ import {v1} from 'uuid';
 import avatarLogo from './assets/avatar/avatar.jpg'
 import {
     AxiosIcon,
-    CSSIcon, GITIcon,
-    HTMLIcon, JestIcon, JSIcon,
+    CSSIcon,
+    GITIcon,
+    HTMLIcon,
+    JestIcon,
+    JSIcon,
     ReactIcon,
-    ReduxIcon, StorybookIcon,
+    ReduxIcon,
+    StorybookIcon,
     TSIcon
 } from './common/components/TechnologyIcons/TechnologyIcons';
 import {NavBar} from './components/navbar/Navbar';
+import {faGithub, faLinkedin, faTelegram} from '@fortawesome/free-brands-svg-icons';
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import {LightMode} from './components/LightMode/LightMode';
+import {ThemeContext} from './context';
 
 export type ProjectType = {
     id: string
     title: string
     description: string
     style: { backgroundImage: string }
+    demoLink: string
+    codeLink: string
 }
 export type SkillType = {
     id: string
@@ -48,37 +58,49 @@ export type AvatarSettingsType = {
 
 function App() {
     const [pageBlur, setPageBlur] = useState(false)
-    const onChangePageBlurValue = useCallback((isBlur:boolean) => {
+    const onChangePageBlurValue = useCallback((isBlur: boolean) => {
         setPageBlur(isBlur)
-    },[])
+    }, [])
+    const [lightMode, setLightMode] = useState(false);
+    const onChangeLightModeHandler = () => {
+        setLightMode(!lightMode)
+    }
     const projectsData: ProjectType[] = [
         {
             id: v1(),
             title: 'Social network',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad consequuntur dolorum iste nemo sint? Nam!',
-            style: {backgroundImage: `url(${socialNetworkProjectLogo})`}
+            description: 'Mini-version of Social network. It is possible to write messages to another users, add posts, and search for new friends.',
+            style: {backgroundImage: `url(${socialNetworkProjectLogo})`},
+            demoLink: 'https://romasushevskij.github.io/social_network/#/login',
+            codeLink: 'https://github.com/RomaSushevskij/social_network'
         },
         {
             id: v1(),
             title: 'To do list',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, repellendus!',
-            style: {backgroundImage: `url(${toDoListProjectLogo})`}
+            description: 'Simple todo list with storage of data on remote server. Technology stack: React, Redux (Redux-thunk), REST API, Storybook, Unit and snapshot tests',
+            style: {backgroundImage: `url(${toDoListProjectLogo})`},
+            demoLink: '',
+            codeLink: 'https://github.com/RomaSushevskij/TODOLIST',
         },
         {
             id: v1(),
             title: 'Movie Database',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, repellendus!',
-            style: {backgroundImage: `url(${movieDatabaseProjectLogo})`}
+            description: 'Simple movie collection app built with React and the OMDBAPI. Technology stack: TypeScript, React, Redux, Redux Thunk and more',
+            style: {backgroundImage: `url(${movieDatabaseProjectLogo})`},
+            demoLink: 'https://romasushevskij.github.io/MovieDatabase',
+            codeLink: 'https://github.com/RomaSushevskij/MovieDatabase'
         },
         {
             id: v1(),
             title: 'Counter',
-            description: 'Lorem ipsum dolor sit amet...',
-            style: {backgroundImage: `url(${counterProjectLogo})`}
+            description: 'This project - just simple counter with settings start value and end value. I used in this project React, Redux, clean CSS, React-router-dom and more',
+            style: {backgroundImage: `url(${counterProjectLogo})`},
+            demoLink: 'https://romasushevskij.github.io/counter/',
+            codeLink: 'https://github.com/RomaSushevskij/counter',
         },
 
     ]
-    const skillsData:SkillType[] = [
+    const skillsData: SkillType[] = [
         {
             id: v1(),
             title: 'HTML',
@@ -147,37 +169,50 @@ function App() {
     }
     const avatarSettings: AvatarSettingsType = {
         backgroundImage: `url(${avatarLogo})`,
-        borderColor: '#2E344E',
+        borderColor: `${lightMode ? '#CBCED8' : '#2E344E'}`,
         width: '250px',
         height: '250px',
     }
     const avatarNavBarSettings: AvatarSettingsType = {
         backgroundImage: `url(${avatarLogo})`,
-        borderColor: '#2E344E',
+        borderColor: `${lightMode ? '#CBCED8' : '#2E344E'}`,
         width: '150px',
         height: '150px',
     }
-    const linkPaths:string[] = ['home', 'skills', 'projects', 'contacts']
+    const linkPaths: string[] = ['home', 'skills', 'projects', 'contacts'];
+    const socialIconsData: { name: IconProp, href: string }[] = [
+        {
+            name: faLinkedin,
+            href: 'https://www.linkedin.com/in/%D1%80%D0%BE%D0%BC%D0%B0%D0%BD-%D1%81%D1%83%D1%89%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-a32b97211/'
+        },
+        {name: faTelegram, href: 'https://t.me/roman_sushevskij'},
+        {name: faGithub, href: 'https://github.com/RomaSushevskij'},
+    ]
     return (
-        <div className={'wrapper'}>
-            {pageBlur && <div className={'bgcBlur'}></div>}
-            <div className={'bglines'}>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+        <ThemeContext.Provider value={{lightMode}}>
+            <LightMode changeLightMode={onChangeLightModeHandler}/>
+            <div className={lightMode ? 'wrapper light' : 'wrapper'}>
+                {pageBlur && <div className={'bgcBlur'}></div>}
+                <div className={lightMode ?  'bglines light' : 'bglines'}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <NavBar avatarNavBarSettings={avatarNavBarSettings}
+                        linkPaths={linkPaths}
+                        onActivateNavBar={onChangePageBlurValue}/>
+                <Main avatarSettings={avatarSettings}
+                      socialIconsData={socialIconsData}/>
+                <Skills skillsData={skillsData}/>
+                <Projects projectsData={projectsData}/>
+                <HireMe/>
+                <Contacts contactsData={contactsData}/>
+                <Footer/>
             </div>
-            <NavBar avatarNavBarSettings={avatarNavBarSettings}
-                    linkPaths={linkPaths}
-                    onActivateNavBar={onChangePageBlurValue}/>
-            <Main avatarSettings={avatarSettings}/>
-            <Skills skillsData={skillsData}/>
-            <Projects projectsData={projectsData}/>
-            <HireMe/>
-            <Contacts contactsData={contactsData}/>
-            <Footer/>
-        </div>
+        </ThemeContext.Provider>
     );
 }
 

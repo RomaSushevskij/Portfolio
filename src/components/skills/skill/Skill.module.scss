@@ -7,11 +7,17 @@
   align-items: center;
   text-align: center;
   margin: 10px 0;
-  background: #191d2b;
-  border: 1px solid #2e344e;
-  border-top: 5px solid #2e344e;
+  background: $secondBgcColor;
+  border: 1px solid $borderColor;
+  border-top: 5px solid $borderColor;
   padding: 30px;
   transition: all .6s ease-out;
+  &.light {
+    background: $lightSecondBgcColor;
+    border: 1px solid $lightBorderColor;
+    border-top: 5px solid $lightBorderColor;
+    transition: all .6s ease-out;
+  }
   &:hover {
     border-top-color: $primaryColor;
     transition: all .6s ease-out;
