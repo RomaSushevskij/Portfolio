@@ -1,13 +1,14 @@
 import style from './Particle.module.scss'
 import Particles from "react-tsparticles";
+import {memo} from 'react';
 
 type OptionsDartType = {}
 type OptionsLightType = {}
 type ParticlePropsType = {
-    lightMode:boolean
+    lightMode: boolean
 }
 
-export const Particle = ({lightMode}:ParticlePropsType) => {
+export const Particle = memo(({lightMode}: ParticlePropsType) => {
     const paramConfig = {
         particles: {
             number: {
@@ -44,7 +45,7 @@ export const Particle = ({lightMode}:ParticlePropsType) => {
     } as OptionsDartType;
 
 
-    const paramConfigLight= {
+    const paramConfigLight = {
         particles: {
             number: {
                 value: 160,
@@ -79,7 +80,8 @@ export const Particle = ({lightMode}:ParticlePropsType) => {
         },
     };
     return (
-        <Particles options={lightMode ? paramConfigLight : paramConfig}
+        <Particles className={style.particle}
+                   options={lightMode ? paramConfigLight : paramConfig}
         />
     );
-}
+})

@@ -1,8 +1,10 @@
 @import "src/common/styles/scss/variables";
+
 svg {
   height: 30px;
   width: 30px;
   vertical-align: middle;
+
   &:not(:root) {
     overflow: hidden;
   }

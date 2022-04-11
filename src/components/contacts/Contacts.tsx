@@ -7,13 +7,45 @@ import {Title} from '../../common/components/Title/Title';
 import {ContactInfoBlock} from './ContactInfoBlock/ContactInfoBlock';
 import {ContactsDataType} from '../../App';
 import {EmailIcon, PhoneIcon, TelegramIcon} from './ContactInfoBlock/ContactInfoBlockIcons/ContactInfoBlockIcons';
-import {useContext} from 'react';
-import {ThemeContext} from '../../context';
+import {FormEvent, memo, MutableRefObject, useRef, useState} from 'react';
+import emailjs from '@emailjs/browser';
 
 type ContactsPropsType = {
     contactsData: ContactsDataType
 }
-export const Contacts = ({contactsData}: ContactsPropsType) => {
+
+export enum ContactBlockType {
+    phone = 'Phone',
+    email = 'Email',
+    telegram = 'Telegram'
+}
+
+export const Contacts = memo(({contactsData}: ContactsPropsType) => {
+    const [inputNameValue, setinputNameValue] = useState('')
+    const [inputEmailValue, setInputEmailValue] = useState('')
+    const [textareaValue, settextareaValue] = useState('')
+
+    const formRef = useRef<HTMLFormElement>(null ) ;
+
+    const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(e.currentTarget)
+        emailjs.sendForm('service_t7jspjt',
+            'template_gkemg9c',
+            formRef.current as string | HTMLFormElement,
+            'hipGVCdjdCQ17duay')
+            .then((result) => {
+                debugger
+                setinputNameValue('')
+                setInputEmailValue('')
+                settextareaValue('')
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+
+    };
+
     return (
         <div className={style.contactsBlock} id={'contacts'}>
             <div className={`${styleContainer.container} ${style.contactsContainer}`}>
@@ -21,23 +53,35 @@ export const Contacts = ({contactsData}: ContactsPropsType) => {
                     <Title titleText={'contact me'}/>
                 </div>
                 <div className={style.formAndContactBlock}>
-                    <form className={style.contactsForm}>
+                    <form className={style.contactsForm}
+                          onSubmit={sendEmail}
+                            ref={formRef}>
                         <InputField label={'Enter your name*'}
-                                    id={'contact_form_name'}/>
+                                    id={'contact_form_name'}
+                                    value={inputNameValue}
+                                    onChange={setinputNameValue}
+                                    name={'name'}/>
                         <InputField label={'Enter your email*'}
-                                    id={'contact_form_email'}/>
+                                    id={'contact_form_email'}
+                                    value={inputEmailValue}
+                                    onChange={setInputEmailValue}
+                                    name={'email'}/>
                         <TextareaField label={'Enter your Message*'}
-                                       id={'contact_form_message'}></TextareaField>
-                        <Button title={'Send mail'}/>
+                                       id={'contact_form_message'}
+                                       name={'message'}
+                                       value={textareaValue}
+                                       onChange={settextareaValue}>
+                        </TextareaField>
+                        <Button title={'Send mail'} type={"submit"}/>
                     </form>
                     <div className={style.contactsInfoBlock}>
-                        <ContactInfoBlock title={'Phone'}
+                        <ContactInfoBlock title={ContactBlockType.phone}
                                           contactsData={contactsData.phone}
                                           icon={<PhoneIcon/>}/>
-                        <ContactInfoBlock title={'Email'}
+                        <ContactInfoBlock title={ContactBlockType.email}
                                           contactsData={contactsData.email}
                                           icon={<EmailIcon/>}/>
-                        <ContactInfoBlock title={'Telegram'}
+                        <ContactInfoBlock title={ContactBlockType.telegram}
                                           contactsData={contactsData.telegram}
                                           icon={<TelegramIcon/>}/>
                     </div>
@@ -45,4 +89,4 @@ export const Contacts = ({contactsData}: ContactsPropsType) => {
             </div>
         </div>
     )
-}
+})

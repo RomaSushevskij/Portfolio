@@ -1,17 +1,24 @@
 import style from './InputField.module.scss'
-import {ChangeEvent, useContext, useState} from 'react';
+import {ChangeEvent, memo, useContext, useState} from 'react';
 import {ThemeContext} from '../../../context';
 
 type InputFieldPropsType = {
     value?: string
     label?: string
     id?: string
+    onChange?: (value: string) => void
+    name?: string
 }
 
-export const InputField = ({value, label, id}: InputFieldPropsType) => {
-    const [inputValue, setInputValue] = useState('')
+export const InputField = memo(({
+                                    value,
+                                    label,
+                                    id,
+                                    onChange,
+                                    name,
+                                }: InputFieldPropsType) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.currentTarget.value)
+        onChange && onChange(e.currentTarget.value)
     }
     const {lightMode} = useContext(ThemeContext)
     return (
@@ -19,10 +26,10 @@ export const InputField = ({value, label, id}: InputFieldPropsType) => {
             <label className={lightMode ? style.light : ''} htmlFor={id}>{label}</label>
             <input className={lightMode ? style.lightInput : ''}
                    type='text'
-                   name='name'
+                   name={name}
                    id={id}
-                   value={inputValue}
+                   value={value}
                    onChange={onChangeHandler}/>
         </div>
     )
-}
+})

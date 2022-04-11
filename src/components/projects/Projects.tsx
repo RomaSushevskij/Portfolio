@@ -3,13 +3,14 @@ import {Project} from "./project/Project";
 import styleContainer from "../../common/styles/Container.module.css";
 import {Title} from "../../common/components/Title/Title";
 import {ProjectType} from "../../App";
+import {memo} from 'react';
 
 type ProjectsPropsType = {
     projectsData: ProjectType[]
 }
 
 
-export const Projects = ({projectsData}: ProjectsPropsType) => {
+export const Projects = memo(({projectsData}: ProjectsPropsType) => {
     const projects = projectsData.map(pr => {
         const {id, title, description, style, demoLink, codeLink} = pr;
         return (
@@ -31,4 +32,4 @@ export const Projects = ({projectsData}: ProjectsPropsType) => {
             </div>
         </div>
     )
-}
+})

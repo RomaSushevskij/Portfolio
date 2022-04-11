@@ -1,16 +1,20 @@
 import style from './Toggle.module.scss'
-import {useState} from 'react';
+import {memo, useContext} from 'react';
+import {ThemeContext} from '../../../context';
 
 type TogglePropsType = {
-    editMode:boolean
+    editMode: boolean
     setToggle: () => void
 }
 
-export const Toggle = ({setToggle,editMode}: TogglePropsType) => {
+export const Toggle = memo(({setToggle, editMode}: TogglePropsType) => {
+    const {lightMode} = useContext(ThemeContext)
+    const isEditModeClassName = editMode ? style.toggleOn : ''
+    const finalNavClassName = lightMode ? `${isEditModeClassName} ${style.light}` : isEditModeClassName
     return (
-        <button className={style.toggle}
+        <button className={lightMode ? `${style.toggle} ${style.light}` : style.toggle}
                 onClick={setToggle}>
-            <i className={editMode ? style.toggleOn : ''}></i>
+            <i className={finalNavClassName}></i>
         </button>
     )
-}
+})

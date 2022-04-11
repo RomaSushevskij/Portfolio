@@ -1,6 +1,6 @@
 import style from './Skill.module.scss'
 import {SkillTitle} from "../../../common/components/SkillTitle/SkillTitle";
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {ThemeContext} from '../../../context';
 
 type SkillPropsType = {
@@ -9,7 +9,7 @@ type SkillPropsType = {
     icon?: any
 }
 
-export const Skill = ({title, description,icon}: SkillPropsType) => {
+export const Skill = memo(({title, description,icon}: SkillPropsType) => {
     const {lightMode} =useContext(ThemeContext)
     return (
         <div className={lightMode ? `${style.skillBlock} ${style.light}` : style.skillBlock}>
@@ -18,4 +18,4 @@ export const Skill = ({title, description,icon}: SkillPropsType) => {
             <p className={style.description}>{description}</p>
         </div>
     )
-}
+})

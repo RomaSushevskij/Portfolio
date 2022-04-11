@@ -1,14 +1,15 @@
 import style from './NavLinkElement.module.scss'
-import {useState} from 'react';
+import {memo, useContext} from 'react';
 import {Link} from 'react-scroll';
+import {ThemeContext} from '../../../context';
 
 type NavLinkElementPropsType = {
     title: string
-    onClick:()=>void
+    onClick: () => void
 }
 
-export const NavLinkElement = ({title,onClick}: NavLinkElementPropsType) => {
-
+export const NavLinkElement = memo(({title, onClick}: NavLinkElementPropsType) => {
+    const {lightMode} = useContext(ThemeContext)
     return (
         <li>
             <Link to={title}
@@ -16,10 +17,11 @@ export const NavLinkElement = ({title,onClick}: NavLinkElementPropsType) => {
                   smooth={true}
                   duration={700}
                   offset={-10}
+                  className={lightMode ? style.light : ''}
                   activeClass={style.activeLink}
                   onClick={onClick}>
                 <span>{title}</span>
             </Link>
         </li>
     )
-}
+})

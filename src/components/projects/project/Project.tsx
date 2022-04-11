@@ -1,7 +1,7 @@
 import styleModule from './Project.module.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCode, faEye} from '@fortawesome/free-solid-svg-icons';
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {ThemeContext} from '../../../context';
 
 type ProjectPropsType = {
@@ -12,12 +12,12 @@ type ProjectPropsType = {
     codeLink: string
 }
 
-export const Project = ({
-                            title,
-                            description,
-                            style,
-                            demoLink, codeLink
-                        }: ProjectPropsType) => {
+export const Project = memo(({
+                                 title,
+                                 description,
+                                 style,
+                                 demoLink, codeLink
+                             }: ProjectPropsType) => {
     const {lightMode} = useContext(ThemeContext)
     return (
         <div className={styleModule.projectBlock}>
@@ -29,7 +29,7 @@ export const Project = ({
                         </a>
                     </li>
                     <li>
-                        <a href={codeLink} target={'_black'}>
+                        <a className={lightMode ? styleModule.light : ''} href={codeLink} target={'_black'}>
                             <FontAwesomeIcon icon={faCode}/>
 
                         </a>
@@ -40,4 +40,4 @@ export const Project = ({
             <h6 className={lightMode ? `${styleModule.description} ${styleModule.light}` : styleModule.description}>{description}</h6>
         </div>
     )
-}
+})

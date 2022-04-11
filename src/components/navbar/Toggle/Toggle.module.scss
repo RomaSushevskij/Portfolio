@@ -15,6 +15,13 @@
   top: 20px;
   width: 50px;
   border: 1px solid $borderColor;
+  transition: all .4s ease-out;
+
+  &.light {
+    background: $lightSecondBgcColor;
+    border: 1px solid $lightBorderColor;
+    transition: all .4s ease-out;
+  }
 
   i {
     display: inline-block;
@@ -26,14 +33,32 @@
     line-height: 1;
     vertical-align: -0.125em;
     -webkit-font-smoothing: antialiased;
+    transition: all .4s ease-out;
+
+    &.light::before {
+      color: $lightTextColor;
+      transition: all .4s ease-out;
+    }
 
     &::before {
       content: '\2630';
       color: $textColor;
+      transition: all .4s ease-out;
+    }
+
+    &.toggleOn.light::before {
+      color: $lightTextColor;
+      transition: all .4s ease-out;
     }
 
     &.toggleOn::before {
       content: '\2573';
+      transition: all .4s ease-out;
+
+      &.light {
+        color: $lightTextColor;
+        transition: all .4s ease-out;
+      }
     }
   }
 }

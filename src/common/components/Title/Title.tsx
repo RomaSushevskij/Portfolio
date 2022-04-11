@@ -1,12 +1,12 @@
 import style from './Title.module.scss'
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {ThemeContext} from '../../../context';
 
 type TitlePropsType = {
     titleText: string
 }
 
-export const Title = ({titleText}: TitlePropsType) => {
+export const Title = memo(({titleText}: TitlePropsType) => {
     const {lightMode} = useContext(ThemeContext)
     return (
         <div className={style.sectionTitle}>
@@ -14,4 +14,4 @@ export const Title = ({titleText}: TitlePropsType) => {
             <span className={lightMode ? style.light : ''}>{titleText}</span>
         </div>
     )
-}
+})

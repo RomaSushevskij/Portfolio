@@ -2,7 +2,7 @@
 
 .mainBlock {
   height: 100vh;
-  margin-bottom:80px;
+  margin-bottom: 80px;
   padding-top: 40px;
 
   .mainContainer {
@@ -21,8 +21,9 @@
         margin-bottom: 0.5rem;
         margin-top: 0;
         transition: all .4s ease-out;
+
         &.light {
-          color:$lightTitleColor;
+          color: $lightTitleColor;
           transition: all .4s ease-out;
         }
 
@@ -37,9 +38,11 @@
         margin-top: 15px;
         margin-bottom: 1rem;
       }
+
       .socialIconsBordered {
         display: flex;
         justify-content: center;
+
         a {
           margin: 10px 8px;
         }

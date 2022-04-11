@@ -1,12 +1,12 @@
 import style from './Note.module.scss'
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {ThemeContext} from '../../../context';
 
 type NotePropsType = {
     innerText: string
 }
 
-export const Note = ({innerText}: NotePropsType) => {
+export const Note = memo(({innerText}: NotePropsType) => {
     const {lightMode} = useContext(ThemeContext)
     return (
 
@@ -14,4 +14,4 @@ export const Note = ({innerText}: NotePropsType) => {
             <p>{innerText}</p>
         </div>
     )
-}
+})

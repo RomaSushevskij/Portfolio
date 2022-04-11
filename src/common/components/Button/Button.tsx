@@ -1,13 +1,13 @@
 import style from './Button.module.scss'
+import {memo} from 'react';
 
 type ButtonPropsType = {
-    title:string
+    title: string
+    type?: string
 }
 
-export const Button = ({title}: ButtonPropsType) => {
+export const Button = memo(({title}: ButtonPropsType) => {
     return (
-
-            <a href="#" className={style.buttonOffer}>{title}</a>
-
+        <button className={style.buttonOffer} type={"submit"}>{title}</button>
     )
-}
+})

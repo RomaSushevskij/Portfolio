@@ -1,7 +1,7 @@
 import style from './SocialIcon.module.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {IconProp} from '@fortawesome/fontawesome-svg-core'
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {ThemeContext} from '../../../context';
 
 
@@ -10,7 +10,7 @@ type SocialIconPropsType = {
     href: string
 }
 
-export const SocialIcon = ({socialIconName, href}: SocialIconPropsType) => {
+export const SocialIcon = memo(({socialIconName, href}: SocialIconPropsType) => {
     const {lightMode} = useContext(ThemeContext)
 
     return (
@@ -23,4 +23,4 @@ export const SocialIcon = ({socialIconName, href}: SocialIconPropsType) => {
                              className={style.icon}/>
         </a>
     )
-}
+})

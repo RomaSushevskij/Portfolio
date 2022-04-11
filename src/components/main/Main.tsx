@@ -5,7 +5,7 @@ import {AvatarSettingsType} from '../../App';
 import {SocialIcon} from '../../common/components/SocialIcon/SocialIcon';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import {Particle} from './Particle/Particle';
-import {useContext} from 'react';
+import {memo, useContext} from 'react';
 import {ThemeContext} from '../../context';
 
 type MainPropsType = {
@@ -13,11 +13,11 @@ type MainPropsType = {
     socialIconsData: { name: IconProp, href: string }[]
 }
 
-export const Main = ({
+export const Main = memo(({
                          avatarSettings,
                          socialIconsData
                      }: MainPropsType) => {
-    const {lightMode} = useContext(ThemeContext)
+    const {lightMode} = useContext(ThemeContext);
     const socialIcons = socialIconsData.map((el, i) => {
         return (
             <SocialIcon
@@ -42,4 +42,4 @@ export const Main = ({
             </div>
         </div>
     )
-}
+})

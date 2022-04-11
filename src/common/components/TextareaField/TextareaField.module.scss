@@ -16,6 +16,7 @@
     display: inline-block;
     font-weight: 400;
     line-height: 1.8rem;
+
     &.light {
       background: $lightMainBgcColor;
       transition: all .4s ease-out;
@@ -32,10 +33,27 @@
     color: $textColor;
     outline: none;
     resize: vertical;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: $textColor;
+      -webkit-box-shadow: 0 0 0px 1000px $mainBgcColor inset;
+      transition: background-color .4s ease-in-out 0s;
+    }
+
     &.lightTextarea {
       border: 1px solid $lightBorderColor;
       color: $lightTextColor;
       transition: all .4s ease-out;
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        -webkit-text-fill-color: $lightTextColor;
+        -webkit-box-shadow: 0 0 0px 1000px $lightMainBgcColor inset;
+        transition: background-color .4s ease-in-out 0s;
+      }
     }
 
   }

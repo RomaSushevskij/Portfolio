@@ -19,7 +19,11 @@ li {
     transition: all .4s ease-out;
     z-index: 1;
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
+
+    &.light {
+      color: $lightTextColor;
+    }
 
     &::before {
       background: rgba(3, 127, 255, .2);
@@ -43,9 +47,10 @@ li {
       visibility: visible;
       width: 100%;
     }
+
     &.activeLink {
       background-color: $primaryColor;
-      color:$titleColor;
+      color: $titleColor;
     }
   }
 }

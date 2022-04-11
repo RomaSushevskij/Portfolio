@@ -10,16 +10,19 @@
   border: 2px solid $borderColor;
   transition: all .4s ease-out;
   color: $textColor;
+
   &.light {
     border: 2px solid $lightBorderColor;
     color: $lightTextColor;
     transition: all .4s ease-out;
   }
+
   .icon {
     font-size: 1.2rem;
   }
+
   &:hover {
-    color:$primaryColor;
+    color: $primaryColor;
     border-color: $primaryColor;
     transition: all .4s ease-out;
   }

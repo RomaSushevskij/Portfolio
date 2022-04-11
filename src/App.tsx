@@ -1,4 +1,4 @@
-import React, {ReactNode, useCallback, useState} from 'react';
+import React, {ReactNode, useCallback, useMemo, useState} from 'react';
 import './App.scss';
 import {Main} from "./components/main/Main";
 import {Skills} from "./components/skills/Skills";
@@ -62,9 +62,9 @@ function App() {
         setPageBlur(isBlur)
     }, [])
     const [lightMode, setLightMode] = useState(false);
-    const onChangeLightModeHandler = () => {
+    const onChangeLightModeHandler = useCallback(() => {
         setLightMode(!lightMode)
-    }
+    }, [lightMode])
     const projectsData: ProjectType[] = [
         {
             id: v1(),
@@ -163,23 +163,29 @@ function App() {
         },
     ]
     const contactsData: ContactsDataType = {
-        phone: ['+375 (29) 184-00-07'],
+        phone: ['+375291840007'],
         email: ['roma.sushevskij@yandex.ru', 'roma.sushevskij@gmail.com'],
         telegram: ['@roman_sushevskij']
     }
-    const avatarSettings: AvatarSettingsType = {
-        backgroundImage: `url(${avatarLogo})`,
-        borderColor: `${lightMode ? '#CBCED8' : '#2E344E'}`,
-        width: '250px',
-        height: '250px',
-    }
-    const avatarNavBarSettings: AvatarSettingsType = {
-        backgroundImage: `url(${avatarLogo})`,
-        borderColor: `${lightMode ? '#CBCED8' : '#2E344E'}`,
-        width: '150px',
-        height: '150px',
-    }
-    const linkPaths: string[] = ['home', 'skills', 'projects', 'contacts'];
+    const avatarSettings: AvatarSettingsType = useMemo(() => {
+        return {
+            backgroundImage: `url(${avatarLogo})`,
+            borderColor: `${lightMode ? '#CBCED8' : '#2E344E'}`,
+            width: '250px',
+            height: '250px',
+        }
+    }, [lightMode, avatarLogo])
+    const avatarNavBarSettings: AvatarSettingsType = useMemo(() => {
+        return {
+            backgroundImage: `url(${avatarLogo})`,
+            borderColor: `${lightMode ? '#CBCED8' : '#2E344E'}`,
+            width: '150px',
+            height: '150px',
+        }
+    }, [lightMode, avatarLogo])
+    const linkPaths: string[] = useMemo(() => {
+        return ['home', 'skills', 'projects', 'contacts']
+    }, [])
     const socialIconsData: { name: IconProp, href: string }[] = [
         {
             name: faLinkedin,
@@ -193,7 +199,7 @@ function App() {
             <LightMode changeLightMode={onChangeLightModeHandler}/>
             <div className={lightMode ? 'wrapper light' : 'wrapper'}>
                 {pageBlur && <div className={'bgcBlur'}></div>}
-                <div className={lightMode ?  'bglines light' : 'bglines'}>
+                <div className={lightMode ? 'bglines light' : 'bglines'}>
                     <span></span>
                     <span></span>
                     <span></span>
