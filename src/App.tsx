@@ -19,6 +19,8 @@ import {
     HTMLIcon,
     JestIcon,
     JSIcon,
+    MUIIcon,
+    PostmanIcon,
     ReactIcon,
     ReduxIcon,
     StorybookIcon,
@@ -160,6 +162,18 @@ function App() {
             title: 'GIT',
             description: 'Where the world builds software',
             icon: <GITIcon/>
+        },
+        {
+            id: v1(),
+            title: 'Material UI',
+            description: 'Comprehensive suite of UI tools to help ship new features faster',
+            icon: <MUIIcon/>
+        },
+        {
+            id: v1(),
+            title: 'Postman',
+            description: 'API platform for building and using APIs simplifies each step of the API lifecycle and streamlines collaboration',
+            icon: <PostmanIcon/>
         },
     ]
     const contactsData: ContactsDataType = {

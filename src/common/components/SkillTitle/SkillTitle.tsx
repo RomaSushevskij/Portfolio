@@ -11,7 +11,7 @@ export const SkillTitle = memo(({titleText}: TitlePropsType) => {
     return (
         <div className={style.sectionTitle}>
             <h5 className={lightMode ? style.light : ''}>{titleText}</h5>
-            <span>{titleText}</span>
+            <span></span>
         </div>
     )
 })
