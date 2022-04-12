@@ -7,7 +7,7 @@ import {Title} from '../../common/components/Title/Title';
 import {ContactInfoBlock} from './ContactInfoBlock/ContactInfoBlock';
 import {ContactsDataType} from '../../App';
 import {EmailIcon, PhoneIcon, TelegramIcon} from './ContactInfoBlock/ContactInfoBlockIcons/ContactInfoBlockIcons';
-import {FormEvent, memo, MutableRefObject, useRef, useState} from 'react';
+import {FormEvent, memo, useRef, useState} from 'react';
 import emailjs from '@emailjs/browser';
 
 type ContactsPropsType = {
@@ -23,26 +23,30 @@ export enum ContactBlockType {
 export const Contacts = memo(({contactsData}: ContactsPropsType) => {
     const [inputNameValue, setinputNameValue] = useState('')
     const [inputEmailValue, setInputEmailValue] = useState('')
-    const [textareaValue, settextareaValue] = useState('')
+    const [textareaValue, setTextareaValue] = useState('')
+    const [isFetching, setIsFetching] = useState(false)
 
-    const formRef = useRef<HTMLFormElement>(null ) ;
+
+    const formRef = useRef<HTMLFormElement>(null);
 
     const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+        setIsFetching(true);
         e.preventDefault();
-        console.log(e.currentTarget)
         emailjs.sendForm('service_t7jspjt',
             'template_gkemg9c',
             formRef.current as string | HTMLFormElement,
             'hipGVCdjdCQ17duay')
             .then((result) => {
-                debugger
                 setinputNameValue('')
                 setInputEmailValue('')
-                settextareaValue('')
+                setTextareaValue('')
                 console.log(result.text);
             }, (error) => {
                 console.log(error.text);
-            });
+            })
+            .finally(() => {
+                setIsFetching(false)
+            })
 
     };
 
@@ -55,7 +59,7 @@ export const Contacts = memo(({contactsData}: ContactsPropsType) => {
                 <div className={style.formAndContactBlock}>
                     <form className={style.contactsForm}
                           onSubmit={sendEmail}
-                            ref={formRef}>
+                          ref={formRef}>
                         <InputField label={'Enter your name*'}
                                     id={'contact_form_name'}
                                     value={inputNameValue}
@@ -70,9 +74,11 @@ export const Contacts = memo(({contactsData}: ContactsPropsType) => {
                                        id={'contact_form_message'}
                                        name={'message'}
                                        value={textareaValue}
-                                       onChange={settextareaValue}>
+                                       onChange={setTextareaValue}>
                         </TextareaField>
-                        <Button title={'Send mail'} type={"submit"}/>
+                        <Button title={'Send mail'}
+                                type={"submit"}
+                                disabled={isFetching}/>
                     </form>
                     <div className={style.contactsInfoBlock}>
                         <ContactInfoBlock title={ContactBlockType.phone}

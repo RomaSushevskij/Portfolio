@@ -1,20 +1,52 @@
 @import "src/common/styles/scss/variables";
 
 .buttonOffer {
-  margin-top: 15px;
-  height: 45px;
-  line-height: 45px;
-  background: $primaryColor;
-  border: 0;
-  color: $titleColor;
-  display: inline-block;
-  font-size: .9rem;
-  letter-spacing: 2px;
-  padding: 0 30px;
   position: relative;
-  text-transform: uppercase;
-  transition: all .4s ease-out;
+  background: $primaryColor;
+  color: $titleColor;
+  border: 0;
+  display: inline-block;
   z-index: 1;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  height: 50px;
+  line-height: 50px;
+  transition: all .4s ease-out;
   cursor: pointer;
+  min-width: 150px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: $titleColor;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: all .4s ease-out;
+  }
+
+  &:hover {
+    color: $titleColor;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgba(3, 127, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3)
+  }
+
+  &:hover::before {
+    transform: scaleX(0);
+  }
 }
 

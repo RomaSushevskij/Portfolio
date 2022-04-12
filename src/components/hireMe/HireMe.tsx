@@ -16,7 +16,6 @@ export const HireMe = () => {
                       offset={-10}>
                     <Button title={'Hire me'}/>
                 </Link>
-
             </div>
         </div>
     )
