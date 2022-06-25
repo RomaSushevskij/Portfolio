@@ -10,6 +10,7 @@ import socialNetworkProjectLogo from '../src/assets/projectsLogo/socialNetwork.j
 import toDoListProjectLogo from './assets/projectsLogo/todolist_1.jpg';
 import counterProjectLogo from './assets/projectsLogo/counter.png';
 import movieDatabaseProjectLogo from './assets/projectsLogo/movieDataBase.png';
+import flashCardsProjectLogo from './assets/projectsLogo/flashCards.png';
 import {v1} from 'uuid';
 import avatarLogo from './assets/avatar/avatar.jpg'
 import {
@@ -22,7 +23,7 @@ import {
     MUIIcon,
     PostmanIcon,
     ReactIcon,
-    ReduxIcon,
+    ReduxIcon, SASSIcon,
     StorybookIcon,
     TSIcon
 } from './common/components/TechnologyIcons/TechnologyIcons';
@@ -70,10 +71,18 @@ function App() {
     const projectsData: ProjectType[] = [
         {
             id: v1(),
+            title: 'Learning cards',
+            description: 'Application for testing and improving knowledge through an algorithm that provides repetition and study of the most difficult topics and questions. It is possible to create your own cards and group them into packs on a specific topic. There is the possibility of searching, sorting cards and packs.',
+            style: {backgroundImage: `url(${flashCardsProjectLogo})`},
+            demoLink: 'https://msseleznev.github.io/friday-app/#/packs',
+            codeLink: 'https://github.com/RomaSushevskij/learning-cards'
+        },
+        {
+            id: v1(),
             title: 'Social network',
             description: 'Mini-version of Social network. It is possible to write messages to another users, add posts, and search for new friends.',
             style: {backgroundImage: `url(${socialNetworkProjectLogo})`},
-            demoLink: 'https://romasushevskij.github.io/social_network/#/login',
+            demoLink: 'https://romasushevskij.github.io/social_network',
             codeLink: 'https://github.com/RomaSushevskij/social_network'
         },
         {
@@ -81,8 +90,8 @@ function App() {
             title: 'To do list',
             description: 'Simple todo list with storage of data on remote server. Technology stack: React, Redux (Redux-thunk), REST API, Storybook, Unit and snapshot tests',
             style: {backgroundImage: `url(${toDoListProjectLogo})`},
-            demoLink: '',
-            codeLink: 'https://github.com/RomaSushevskij/TODOLIST',
+            demoLink: 'https://romasushevskij.github.io/TO-DO-LIST',
+            codeLink: 'https://github.com/RomaSushevskij/TO-DO-LIST',
         },
         {
             id: v1(),
@@ -114,6 +123,12 @@ function App() {
             title: 'CSS',
             description: 'CSS is a formal language for describing the appearance of a document written using a markup language',
             icon: <CSSIcon/>
+        },
+        {
+            id: v1(),
+            title: 'SASS',
+            description: 'Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.',
+            icon: <SASSIcon/>
         },
         {
             id: v1(),
