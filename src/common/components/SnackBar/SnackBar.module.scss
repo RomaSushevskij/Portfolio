@@ -1,0 +1,21 @@
+@import "src/common/styles/scss/variables";
+
+.snackBarWrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+   .snackBarContainer {
+     background-color: rgba(41, 82, 134, 0.96);
+     padding: 10px 20px;
+     margin:0 20px;
+     color:$titleColor;
+     display: inline-block;
+     position: fixed;
+     box-shadow: 0 0 15px rgba(0,0,0,4);
+     top: 20px;
+     z-index: 2;
+     &.error {
+       background-color: rgba(134, 41, 41, 0.96);
+     }
+   }
+}
