@@ -56,9 +56,7 @@ export const Contacts = memo(({contactsData}: ContactsPropsType) => {
     //         })
     // };
 
-    const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
-        debugger
-        try {
+    const sendEmail = async (e: FormEvent<HTMLFormElement>) => {try {
             setIsFetching(true);
             e.preventDefault();
             if (isValidForm) {
@@ -86,7 +84,6 @@ export const Contacts = memo(({contactsData}: ContactsPropsType) => {
     };
 
     useEffect(() => {
-        debugger
         if (inputNameValue.trim() && inputEmailValue.trim() && textareaValue.trim()) {
             setIsValidForm(true);
             return
