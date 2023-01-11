@@ -9,13 +9,14 @@ import {Footer} from "./components/footer/Footer";
 import socialNetworkProjectLogo from '../src/assets/projectsLogo/socialNetwork.jpg';
 import toDoListProjectLogo from './assets/projectsLogo/todolist_1.jpg';
 import counterProjectLogo from './assets/projectsLogo/counter.png';
+import iMarketProjectLogo from './assets/projectsLogo/imarket.png';
 import movieDatabaseProjectLogo from './assets/projectsLogo/movieDataBase.png';
 import flashCardsProjectLogo from './assets/projectsLogo/flashCards.png';
 import {v1} from 'uuid';
 import avatarLogo from './assets/avatar/avatar.jpg'
 import {
     AxiosIcon,
-    CSSIcon,
+    CSSIcon, FirebaseIcon,
     GITIcon,
     HTMLIcon,
     JestIcon,
@@ -109,6 +110,14 @@ function App() {
             demoLink: 'https://romasushevskij.github.io/counter/',
             codeLink: 'https://github.com/RomaSushevskij/counter',
         },
+        {
+            id: v1(),
+            title: 'IMarket',
+            description: 'This application is a simple online store with the ability to order goods through the basket and track the status of the order. Authentication flow, work with the database is implemented on the basis of firebase',
+            style: {backgroundImage: `url(${iMarketProjectLogo})`},
+            demoLink: 'https://romasushevskij.github.io/market/',
+            codeLink: 'https://github.com/RomaSushevskij/market',
+        },
 
     ]
     const skillsData: SkillType[] = [
@@ -189,6 +198,12 @@ function App() {
             title: 'Postman',
             description: 'API platform for building and using APIs simplifies each step of the API lifecycle and streamlines collaboration',
             icon: <PostmanIcon/>
+        },
+        {
+            id: v1(),
+            title: 'Firebase',
+            description: 'App development platform that helps you build and grow apps and games users love. Backed by Google and trusted by millions of businesses around the world.',
+            icon: <FirebaseIcon/>
         },
     ]
     const contactsData: ContactsDataType = {
